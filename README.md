@@ -24,8 +24,8 @@ A comprehensive automated web application security scanner that orchestrates mul
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/owasp-scanner.git
-cd owasp-scanner
+git clone https://github.com/Abdallah-Dridi/AuWASP.git
+cd AuWASP
 
 # Run the setup script
 chmod +x setup.sh
