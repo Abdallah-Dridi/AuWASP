@@ -1,0 +1,595 @@
+{
+  "target": "http://localhost:8000/",
+  "crawled_urls": {
+    "http://localhost:8000/documentation": "<!DOCTYPE html>\n<html>\n<head>\n    <title>Vulnerable Test App</title>\n    <style>body { font-family: sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }</style>\n</head>\n<body>\n    <h1>Vulnerable Test Application</h1>\n    <p><strong>Message:</strong> </p>\n\n    <hr>\n    <h2>1. Login (SQL Injection)</h2>\n    <p>Try: <code>' OR '1'='1' --</code> in the username field.</p>\n    <form method=\"POST\">\n        <input type=\"text\" name=\"username\" placeholder=\"Username\" required>\n        <input type=\"password\" name=\"password\" placeholder=\"Password\">\n        <input type=\"submit\" name=\"login\" value=\"Login\">\n    </form>\n\n    <hr>\n    <h2>2. Reflected XSS</h2>\n    <p>Try: <code>&lt;script&gt;alert('XSS')&lt;/script&gt;</code></p>\n    <form method=\"POST\">\n        <input type=\"text\" name=\"comment\" placeholder=\"Leave a comment\" required>\n        <input type=\"submit\" value=\"Submit Comment\">\n    </form>\n\n    <hr>\n    <h2>3. Search (SQL Injection + Reflected XSS)</h2>\n    <p>Try SQLi: <code>' UNION SELECT null, id, username FROM users --</code></p>\n    <p>Try XSS: <code>&lt;script&gt;alert('XSS')&lt;/script&gt;</code></p>\n    <form method=\"GET\">\n        <input type=\"text\" name=\"search\" placeholder=\"Search users...\" value=\"\">\n        <input type=\"submit\" value=\"Search\">\n    </form>\n    \n    <hr>\n    <h2>4. Stored XSS (Simulated)</h2>\n        <p>Try: <code>&lt;script&gt;alert('Stored XSS!')&lt;/script&gt;</code></p>\n    <form method=\"POST\">\n        <input type=\"text\" name=\"stored_comment\" placeholder=\"Comment to be 'stored'\" required>\n        <input type=\"submit\" value=\"Store Comment\">\n    </form>\n    <h3>Last 'Stored' Comment (Would be shown to other users):</h3>\n    <p></p> <!-- Stored XSS here -->\n\n</body>\n</html>\n",
+    "http://localhost:8000/contact": "<!DOCTYPE html>\n<html>\n<head>\n    <title>Vulnerable Test App</title>\n    <style>body { font-family: sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }</style>\n</head>\n<body>\n    <h1>Vulnerable Test Application</h1>\n    <p><strong>Message:</strong> </p>\n\n    <hr>\n    <h2>1. Login (SQL Injection)</h2>\n    <p>Try: <code>' OR '1'='1' --</code> in the username field.</p>\n    <form method=\"POST\">\n        <input type=\"text\" name=\"username\" placeholder=\"Username\" required>\n        <input type=\"password\" name=\"password\" placeholder=\"Password\">\n        <input type=\"submit\" name=\"login\" value=\"Login\">\n    </form>\n\n    <hr>\n    <h2>2. Reflected XSS</h2>\n    <p>Try: <code>&lt;script&gt;alert('XSS')&lt;/script&gt;</code></p>\n    <form method=\"POST\">\n        <input type=\"text\" name=\"comment\" placeholder=\"Leave a comment\" required>\n        <input type=\"submit\" value=\"Submit Comment\">\n    </form>\n\n    <hr>\n    <h2>3. Search (SQL Injection + Reflected XSS)</h2>\n    <p>Try SQLi: <code>' UNION SELECT null, id, username FROM users --</code></p>\n    <p>Try XSS: <code>&lt;script&gt;alert('XSS')&lt;/script&gt;</code></p>\n    <form method=\"GET\">\n        <input type=\"text\" name=\"search\" placeholder=\"Search users...\" value=\"\">\n        <input type=\"submit\" value=\"Search\">\n    </form>\n    \n    <hr>\n    <h2>4. Stored XSS (Simulated)</h2>\n        <p>Try: <code>&lt;script&gt;alert('Stored XSS!')&lt;/script&gt;</code></p>\n    <form method=\"POST\">\n        <input type=\"text\" name=\"stored_comment\" placeholder=\"Comment to be 'stored'\" required>\n        <input type=\"submit\" value=\"Store Comment\">\n    </form>\n    <h3>Last 'Stored' Comment (Would be shown to other users):</h3>\n    <p></p> <!-- Stored XSS here -->\n\n</body>\n</html>\n",
+    "http://localhost:8000/about": "<!DOCTYPE html>\n<html>\n<head>\n    <title>Vulnerable Test App</title>\n    <style>body { font-family: sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }</style>\n</head>\n<body>\n    <h1>Vulnerable Test Application</h1>\n    <p><strong>Message:</strong> </p>\n\n    <hr>\n    <h2>1. Login (SQL Injection)</h2>\n    <p>Try: <code>' OR '1'='1' --</code> in the username field.</p>\n    <form method=\"POST\">\n        <input type=\"text\" name=\"username\" placeholder=\"Username\" required>\n        <input type=\"password\" name=\"password\" placeholder=\"Password\">\n        <input type=\"submit\" name=\"login\" value=\"Login\">\n    </form>\n\n    <hr>\n    <h2>2. Reflected XSS</h2>\n    <p>Try: <code>&lt;script&gt;alert('XSS')&lt;/script&gt;</code></p>\n    <form method=\"POST\">\n        <input type=\"text\" name=\"comment\" placeholder=\"Leave a comment\" required>\n        <input type=\"submit\" value=\"Submit Comment\">\n    </form>\n\n    <hr>\n    <h2>3. Search (SQL Injection + Reflected XSS)</h2>\n    <p>Try SQLi: <code>' UNION SELECT null, id, username FROM users --</code></p>\n    <p>Try XSS: <code>&lt;script&gt;alert('XSS')&lt;/script&gt;</code></p>\n    <form method=\"GET\">\n        <input type=\"text\" name=\"search\" placeholder=\"Search users...\" value=\"\">\n        <input type=\"submit\" value=\"Search\">\n    </form>\n    \n    <hr>\n    <h2>4. Stored XSS (Simulated)</h2>\n        <p>Try: <code>&lt;script&gt;alert('Stored XSS!')&lt;/script&gt;</code></p>\n    <form method=\"POST\">\n        <input type=\"text\" name=\"stored_comment\" placeholder=\"Comment to be 'stored'\" required>\n        <input type=\"submit\" value=\"Store Comment\">\n    </form>\n    <h3>Last 'Stored' Comment (Would be shown to other users):</h3>\n    <p></p> <!-- Stored XSS here -->\n\n</body>\n</html>\n",
+    "http://localhost:8000/home": "<!DOCTYPE html>\n<html>\n<head>\n    <title>Vulnerable Test App</title>\n    <style>body { font-family: sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }</style>\n</head>\n<body>\n    <h1>Vulnerable Test Application</h1>\n    <p><strong>Message:</strong> </p>\n\n    <hr>\n    <h2>1. Login (SQL Injection)</h2>\n    <p>Try: <code>' OR '1'='1' --</code> in the username field.</p>\n    <form method=\"POST\">\n        <input type=\"text\" name=\"username\" placeholder=\"Username\" required>\n        <input type=\"password\" name=\"password\" placeholder=\"Password\">\n        <input type=\"submit\" name=\"login\" value=\"Login\">\n    </form>\n\n    <hr>\n    <h2>2. Reflected XSS</h2>\n    <p>Try: <code>&lt;script&gt;alert('XSS')&lt;/script&gt;</code></p>\n    <form method=\"POST\">\n        <input type=\"text\" name=\"comment\" placeholder=\"Leave a comment\" required>\n        <input type=\"submit\" value=\"Submit Comment\">\n    </form>\n\n    <hr>\n    <h2>3. Search (SQL Injection + Reflected XSS)</h2>\n    <p>Try SQLi: <code>' UNION SELECT null, id, username FROM users --</code></p>\n    <p>Try XSS: <code>&lt;script&gt;alert('XSS')&lt;/script&gt;</code></p>\n    <form method=\"GET\">\n        <input type=\"text\" name=\"search\" placeholder=\"Search users...\" value=\"\">\n        <input type=\"submit\" value=\"Search\">\n    </form>\n    \n    <hr>\n    <h2>4. Stored XSS (Simulated)</h2>\n        <p>Try: <code>&lt;script&gt;alert('Stored XSS!')&lt;/script&gt;</code></p>\n    <form method=\"POST\">\n        <input type=\"text\" name=\"stored_comment\" placeholder=\"Comment to be 'stored'\" required>\n        <input type=\"submit\" value=\"Store Comment\">\n    </form>\n    <h3>Last 'Stored' Comment (Would be shown to other users):</h3>\n    <p></p> <!-- Stored XSS here -->\n\n</body>\n</html>\n",
+    "http://localhost:8000/index.html": "<!DOCTYPE html>\n<html>\n<head>\n    <title>Vulnerable Test App</title>\n    <style>body { font-family: sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }</style>\n</head>\n<body>\n    <h1>Vulnerable Test Application</h1>\n    <p><strong>Message:</strong> </p>\n\n    <hr>\n    <h2>1. Login (SQL Injection)</h2>\n    <p>Try: <code>' OR '1'='1' --</code> in the username field.</p>\n    <form method=\"POST\">\n        <input type=\"text\" name=\"username\" placeholder=\"Username\" required>\n        <input type=\"password\" name=\"password\" placeholder=\"Password\">\n        <input type=\"submit\" name=\"login\" value=\"Login\">\n    </form>\n\n    <hr>\n    <h2>2. Reflected XSS</h2>\n    <p>Try: <code>&lt;script&gt;alert('XSS')&lt;/script&gt;</code></p>\n    <form method=\"POST\">\n        <input type=\"text\" name=\"comment\" placeholder=\"Leave a comment\" required>\n        <input type=\"submit\" value=\"Submit Comment\">\n    </form>\n\n    <hr>\n    <h2>3. Search (SQL Injection + Reflected XSS)</h2>\n    <p>Try SQLi: <code>' UNION SELECT null, id, username FROM users --</code></p>\n    <p>Try XSS: <code>&lt;script&gt;alert('XSS')&lt;/script&gt;</code></p>\n    <form method=\"GET\">\n        <input type=\"text\" name=\"search\" placeholder=\"Search users...\" value=\"\">\n        <input type=\"submit\" value=\"Search\">\n    </form>\n    \n    <hr>\n    <h2>4. Stored XSS (Simulated)</h2>\n        <p>Try: <code>&lt;script&gt;alert('Stored XSS!')&lt;/script&gt;</code></p>\n    <form method=\"POST\">\n        <input type=\"text\" name=\"stored_comment\" placeholder=\"Comment to be 'stored'\" required>\n        <input type=\"submit\" value=\"Store Comment\">\n    </form>\n    <h3>Last 'Stored' Comment (Would be shown to other users):</h3>\n    <p></p> <!-- Stored XSS here -->\n\n</body>\n</html>\n",
+    "http://localhost:8000/login": "<!DOCTYPE html>\n<html>\n<head>\n    <title>Vulnerable Test App</title>\n    <style>body { font-family: sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }</style>\n</head>\n<body>\n    <h1>Vulnerable Test Application</h1>\n    <p><strong>Message:</strong> </p>\n\n    <hr>\n    <h2>1. Login (SQL Injection)</h2>\n    <p>Try: <code>' OR '1'='1' --</code> in the username field.</p>\n    <form method=\"POST\">\n        <input type=\"text\" name=\"username\" placeholder=\"Username\" required>\n        <input type=\"password\" name=\"password\" placeholder=\"Password\">\n        <input type=\"submit\" name=\"login\" value=\"Login\">\n    </form>\n\n    <hr>\n    <h2>2. Reflected XSS</h2>\n    <p>Try: <code>&lt;script&gt;alert('XSS')&lt;/script&gt;</code></p>\n    <form method=\"POST\">\n        <input type=\"text\" name=\"comment\" placeholder=\"Leave a comment\" required>\n        <input type=\"submit\" value=\"Submit Comment\">\n    </form>\n\n    <hr>\n    <h2>3. Search (SQL Injection + Reflected XSS)</h2>\n    <p>Try SQLi: <code>' UNION SELECT null, id, username FROM users --</code></p>\n    <p>Try XSS: <code>&lt;script&gt;alert('XSS')&lt;/script&gt;</code></p>\n    <form method=\"GET\">\n        <input type=\"text\" name=\"search\" placeholder=\"Search users...\" value=\"\">\n        <input type=\"submit\" value=\"Search\">\n    </form>\n    \n    <hr>\n    <h2>4. Stored XSS (Simulated)</h2>\n        <p>Try: <code>&lt;script&gt;alert('Stored XSS!')&lt;/script&gt;</code></p>\n    <form method=\"POST\">\n        <input type=\"text\" name=\"stored_comment\" placeholder=\"Comment to be 'stored'\" required>\n        <input type=\"submit\" value=\"Store Comment\">\n    </form>\n    <h3>Last 'Stored' Comment (Would be shown to other users):</h3>\n    <p></p> <!-- Stored XSS here -->\n\n</body>\n</html>\n",
+    "http://localhost:8000/": "<!DOCTYPE html>\n<html>\n<head>\n    <title>Vulnerable Test App</title>\n    <style>body { font-family: sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }</style>\n</head>\n<body>\n    <h1>Vulnerable Test Application</h1>\n    <p><strong>Message:</strong> </p>\n\n    <hr>\n    <h2>1. Login (SQL Injection)</h2>\n    <p>Try: <code>' OR '1'='1' --</code> in the username field.</p>\n    <form method=\"POST\">\n        <input type=\"text\" name=\"username\" placeholder=\"Username\" required>\n        <input type=\"password\" name=\"password\" placeholder=\"Password\">\n        <input type=\"submit\" name=\"login\" value=\"Login\">\n    </form>\n\n    <hr>\n    <h2>2. Reflected XSS</h2>\n    <p>Try: <code>&lt;script&gt;alert('XSS')&lt;/script&gt;</code></p>\n    <form method=\"POST\">\n        <input type=\"text\" name=\"comment\" placeholder=\"Leave a comment\" required>\n        <input type=\"submit\" value=\"Submit Comment\">\n    </form>\n\n    <hr>\n    <h2>3. Search (SQL Injection + Reflected XSS)</h2>\n    <p>Try SQLi: <code>' UNION SELECT null, id, username FROM users --</code></p>\n    <p>Try XSS: <code>&lt;script&gt;alert('XSS')&lt;/script&gt;</code></p>\n    <form method=\"GET\">\n        <input type=\"text\" name=\"search\" placeholder=\"Search users...\" value=\"\">\n        <input type=\"submit\" value=\"Search\">\n    </form>\n    \n    <hr>\n    <h2>4. Stored XSS (Simulated)</h2>\n        <p>Try: <code>&lt;script&gt;alert('Stored XSS!')&lt;/script&gt;</code></p>\n    <form method=\"POST\">\n        <input type=\"text\" name=\"stored_comment\" placeholder=\"Comment to be 'stored'\" required>\n        <input type=\"submit\" value=\"Store Comment\">\n    </form>\n    <h3>Last 'Stored' Comment (Would be shown to other users):</h3>\n    <p></p> <!-- Stored XSS here -->\n\n</body>\n</html>\n",
+    "http://localhost:8000/api": "<!DOCTYPE html>\n<html>\n<head>\n    <title>Vulnerable Test App</title>\n    <style>body { font-family: sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }</style>\n</head>\n<body>\n    <h1>Vulnerable Test Application</h1>\n    <p><strong>Message:</strong> </p>\n\n    <hr>\n    <h2>1. Login (SQL Injection)</h2>\n    <p>Try: <code>' OR '1'='1' --</code> in the username field.</p>\n    <form method=\"POST\">\n        <input type=\"text\" name=\"username\" placeholder=\"Username\" required>\n        <input type=\"password\" name=\"password\" placeholder=\"Password\">\n        <input type=\"submit\" name=\"login\" value=\"Login\">\n    </form>\n\n    <hr>\n    <h2>2. Reflected XSS</h2>\n    <p>Try: <code>&lt;script&gt;alert('XSS')&lt;/script&gt;</code></p>\n    <form method=\"POST\">\n        <input type=\"text\" name=\"comment\" placeholder=\"Leave a comment\" required>\n        <input type=\"submit\" value=\"Submit Comment\">\n    </form>\n\n    <hr>\n    <h2>3. Search (SQL Injection + Reflected XSS)</h2>\n    <p>Try SQLi: <code>' UNION SELECT null, id, username FROM users --</code></p>\n    <p>Try XSS: <code>&lt;script&gt;alert('XSS')&lt;/script&gt;</code></p>\n    <form method=\"GET\">\n        <input type=\"text\" name=\"search\" placeholder=\"Search users...\" value=\"\">\n        <input type=\"submit\" value=\"Search\">\n    </form>\n    \n    <hr>\n    <h2>4. Stored XSS (Simulated)</h2>\n        <p>Try: <code>&lt;script&gt;alert('Stored XSS!')&lt;/script&gt;</code></p>\n    <form method=\"POST\">\n        <input type=\"text\" name=\"stored_comment\" placeholder=\"Comment to be 'stored'\" required>\n        <input type=\"submit\" value=\"Store Comment\">\n    </form>\n    <h3>Last 'Stored' Comment (Would be shown to other users):</h3>\n    <p></p> <!-- Stored XSS here -->\n\n</body>\n</html>\n",
+    "http://localhost:8000/help": "<!DOCTYPE html>\n<html>\n<head>\n    <title>Vulnerable Test App</title>\n    <style>body { font-family: sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }</style>\n</head>\n<body>\n    <h1>Vulnerable Test Application</h1>\n    <p><strong>Message:</strong> </p>\n\n    <hr>\n    <h2>1. Login (SQL Injection)</h2>\n    <p>Try: <code>' OR '1'='1' --</code> in the username field.</p>\n    <form method=\"POST\">\n        <input type=\"text\" name=\"username\" placeholder=\"Username\" required>\n        <input type=\"password\" name=\"password\" placeholder=\"Password\">\n        <input type=\"submit\" name=\"login\" value=\"Login\">\n    </form>\n\n    <hr>\n    <h2>2. Reflected XSS</h2>\n    <p>Try: <code>&lt;script&gt;alert('XSS')&lt;/script&gt;</code></p>\n    <form method=\"POST\">\n        <input type=\"text\" name=\"comment\" placeholder=\"Leave a comment\" required>\n        <input type=\"submit\" value=\"Submit Comment\">\n    </form>\n\n    <hr>\n    <h2>3. Search (SQL Injection + Reflected XSS)</h2>\n    <p>Try SQLi: <code>' UNION SELECT null, id, username FROM users --</code></p>\n    <p>Try XSS: <code>&lt;script&gt;alert('XSS')&lt;/script&gt;</code></p>\n    <form method=\"GET\">\n        <input type=\"text\" name=\"search\" placeholder=\"Search users...\" value=\"\">\n        <input type=\"submit\" value=\"Search\">\n    </form>\n    \n    <hr>\n    <h2>4. Stored XSS (Simulated)</h2>\n        <p>Try: <code>&lt;script&gt;alert('Stored XSS!')&lt;/script&gt;</code></p>\n    <form method=\"POST\">\n        <input type=\"text\" name=\"stored_comment\" placeholder=\"Comment to be 'stored'\" required>\n        <input type=\"submit\" value=\"Store Comment\">\n    </form>\n    <h3>Last 'Stored' Comment (Would be shown to other users):</h3>\n    <p></p> <!-- Stored XSS here -->\n\n</body>\n</html>\n",
+    "http://localhost:8000/admin": "<!DOCTYPE html>\n<html>\n<head>\n    <title>Vulnerable Test App</title>\n    <style>body { font-family: sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }</style>\n</head>\n<body>\n    <h1>Vulnerable Test Application</h1>\n    <p><strong>Message:</strong> </p>\n\n    <hr>\n    <h2>1. Login (SQL Injection)</h2>\n    <p>Try: <code>' OR '1'='1' --</code> in the username field.</p>\n    <form method=\"POST\">\n        <input type=\"text\" name=\"username\" placeholder=\"Username\" required>\n        <input type=\"password\" name=\"password\" placeholder=\"Password\">\n        <input type=\"submit\" name=\"login\" value=\"Login\">\n    </form>\n\n    <hr>\n    <h2>2. Reflected XSS</h2>\n    <p>Try: <code>&lt;script&gt;alert('XSS')&lt;/script&gt;</code></p>\n    <form method=\"POST\">\n        <input type=\"text\" name=\"comment\" placeholder=\"Leave a comment\" required>\n        <input type=\"submit\" value=\"Submit Comment\">\n    </form>\n\n    <hr>\n    <h2>3. Search (SQL Injection + Reflected XSS)</h2>\n    <p>Try SQLi: <code>' UNION SELECT null, id, username FROM users --</code></p>\n    <p>Try XSS: <code>&lt;script&gt;alert('XSS')&lt;/script&gt;</code></p>\n    <form method=\"GET\">\n        <input type=\"text\" name=\"search\" placeholder=\"Search users...\" value=\"\">\n        <input type=\"submit\" value=\"Search\">\n    </form>\n    \n    <hr>\n    <h2>4. Stored XSS (Simulated)</h2>\n        <p>Try: <code>&lt;script&gt;alert('Stored XSS!')&lt;/script&gt;</code></p>\n    <form method=\"POST\">\n        <input type=\"text\" name=\"stored_comment\" placeholder=\"Comment to be 'stored'\" required>\n        <input type=\"submit\" value=\"Store Comment\">\n    </form>\n    <h3>Last 'Stored' Comment (Would be shown to other users):</h3>\n    <p></p> <!-- Stored XSS here -->\n\n</body>\n</html>\n",
+    "http://localhost:8000/index.php": "<!DOCTYPE html>\n<html>\n<head>\n    <title>Vulnerable Test App</title>\n    <style>body { font-family: sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }</style>\n</head>\n<body>\n    <h1>Vulnerable Test Application</h1>\n    <p><strong>Message:</strong> </p>\n\n    <hr>\n    <h2>1. Login (SQL Injection)</h2>\n    <p>Try: <code>' OR '1'='1' --</code> in the username field.</p>\n    <form method=\"POST\">\n        <input type=\"text\" name=\"username\" placeholder=\"Username\" required>\n        <input type=\"password\" name=\"password\" placeholder=\"Password\">\n        <input type=\"submit\" name=\"login\" value=\"Login\">\n    </form>\n\n    <hr>\n    <h2>2. Reflected XSS</h2>\n    <p>Try: <code>&lt;script&gt;alert('XSS')&lt;/script&gt;</code></p>\n    <form method=\"POST\">\n        <input type=\"text\" name=\"comment\" placeholder=\"Leave a comment\" required>\n        <input type=\"submit\" value=\"Submit Comment\">\n    </form>\n\n    <hr>\n    <h2>3. Search (SQL Injection + Reflected XSS)</h2>\n    <p>Try SQLi: <code>' UNION SELECT null, id, username FROM users --</code></p>\n    <p>Try XSS: <code>&lt;script&gt;alert('XSS')&lt;/script&gt;</code></p>\n    <form method=\"GET\">\n        <input type=\"text\" name=\"search\" placeholder=\"Search users...\" value=\"\">\n        <input type=\"submit\" value=\"Search\">\n    </form>\n    \n    <hr>\n    <h2>4. Stored XSS (Simulated)</h2>\n        <p>Try: <code>&lt;script&gt;alert('Stored XSS!')&lt;/script&gt;</code></p>\n    <form method=\"POST\">\n        <input type=\"text\" name=\"stored_comment\" placeholder=\"Comment to be 'stored'\" required>\n        <input type=\"submit\" value=\"Store Comment\">\n    </form>\n    <h3>Last 'Stored' Comment (Would be shown to other users):</h3>\n    <p></p> <!-- Stored XSS here -->\n\n</body>\n</html>\n",
+    "http://localhost:8000/docs": "<!DOCTYPE html>\n<html>\n<head>\n    <title>Vulnerable Test App</title>\n    <style>body { font-family: sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }</style>\n</head>\n<body>\n    <h1>Vulnerable Test Application</h1>\n    <p><strong>Message:</strong> </p>\n\n    <hr>\n    <h2>1. Login (SQL Injection)</h2>\n    <p>Try: <code>' OR '1'='1' --</code> in the username field.</p>\n    <form method=\"POST\">\n        <input type=\"text\" name=\"username\" placeholder=\"Username\" required>\n        <input type=\"password\" name=\"password\" placeholder=\"Password\">\n        <input type=\"submit\" name=\"login\" value=\"Login\">\n    </form>\n\n    <hr>\n    <h2>2. Reflected XSS</h2>\n    <p>Try: <code>&lt;script&gt;alert('XSS')&lt;/script&gt;</code></p>\n    <form method=\"POST\">\n        <input type=\"text\" name=\"comment\" placeholder=\"Leave a comment\" required>\n        <input type=\"submit\" value=\"Submit Comment\">\n    </form>\n\n    <hr>\n    <h2>3. Search (SQL Injection + Reflected XSS)</h2>\n    <p>Try SQLi: <code>' UNION SELECT null, id, username FROM users --</code></p>\n    <p>Try XSS: <code>&lt;script&gt;alert('XSS')&lt;/script&gt;</code></p>\n    <form method=\"GET\">\n        <input type=\"text\" name=\"search\" placeholder=\"Search users...\" value=\"\">\n        <input type=\"submit\" value=\"Search\">\n    </form>\n    \n    <hr>\n    <h2>4. Stored XSS (Simulated)</h2>\n        <p>Try: <code>&lt;script&gt;alert('Stored XSS!')&lt;/script&gt;</code></p>\n    <form method=\"POST\">\n        <input type=\"text\" name=\"stored_comment\" placeholder=\"Comment to be 'stored'\" required>\n        <input type=\"submit\" value=\"Store Comment\">\n    </form>\n    <h3>Last 'Stored' Comment (Would be shown to other users):</h3>\n    <p></p> <!-- Stored XSS here -->\n\n</body>\n</html>\n"
+  },
+  "filtered_urls": {
+    "static": [],
+    "dynamic": [],
+    "forms": [
+      {
+        "url": "http://localhost:8000/documentation",
+        "action": "http://localhost:8000/documentation",
+        "method": "POST",
+        "inputs": [
+          {
+            "name": "stored_comment",
+            "type": "text",
+            "value": ""
+          }
+        ],
+        "source_url": "http://localhost:8000/documentation",
+        "sql_params": [],
+        "xss_params": [
+          "stored_comment"
+        ]
+      }
+    ],
+    "sensitive": [
+      "http://localhost:8000/admin",
+      "http://localhost:8000/api",
+      "http://localhost:8000/login"
+    ],
+    "api_endpoints": [
+      "http://localhost:8000/api"
+    ],
+    "excluded": [],
+    "all_in_scope": [
+      "http://localhost:8000/",
+      "http://localhost:8000/about",
+      "http://localhost:8000/admin",
+      "http://localhost:8000/api",
+      "http://localhost:8000/contact",
+      "http://localhost:8000/docs",
+      "http://localhost:8000/documentation",
+      "http://localhost:8000/help",
+      "http://localhost:8000/home",
+      "http://localhost:8000/index.html",
+      "http://localhost:8000/index.php",
+      "http://localhost:8000/login"
+    ]
+  },
+  "sql_injection": [
+    {
+      "url": "http://localhost:8000/documentation",
+      "vulnerable": false,
+      "vulnerability_type": null,
+      "vulnerable_parameters": [],
+      "payloads": [],
+      "details": {},
+      "severity": "info",
+      "owasp_category": "A03:2021 \u2013 Injection",
+      "timestamp": "2025-09-02T20:17:28.815853",
+      "tool": "custom_form_tester",
+      "method": "POST"
+    }
+  ],
+  "xss": [
+    {
+      "url": "http://localhost:8000/documentation",
+      "vulnerable": true,
+      "vulnerability_type": null,
+      "vulnerable_parameters": [
+        "stored_comment",
+        "stored_comment",
+        "stored_comment"
+      ],
+      "payloads": [
+        {
+          "parameter": "stored_comment",
+          "payload": "<script>alert(\"XSS\")</script>",
+          "context": "html_content",
+          "evidence": [
+            "js_indicator_alert_found"
+          ]
+        },
+        {
+          "parameter": "stored_comment",
+          "payload": "<svg onload=alert(\"XSS\")>",
+          "context": "html_content",
+          "evidence": [
+            "js_indicator_alert_found"
+          ]
+        },
+        {
+          "parameter": "stored_comment",
+          "payload": "<img src=x onerror=alert(\"XSS\")>",
+          "context": "html_content",
+          "evidence": [
+            "js_indicator_alert_found"
+          ]
+        }
+      ],
+      "contexts": [],
+      "severity": "high",
+      "owasp_category": "A03:2021 \u2013 Injection",
+      "timestamp": "2025-09-02T20:17:28.892396",
+      "tool": "custom_form_tester",
+      "method": "POST"
+    }
+  ],
+  "path_enumeration": [
+    {
+      "url": "http://localhost:8000//admin.html",
+      "path": "admin.html",
+      "status_code": 200,
+      "length": 1732,
+      "redirect": "",
+      "tool": "ffuf",
+      "risk": "high_risk",
+      "owasp_category": "A01:2021 \u2013 Broken Access Control",
+      "timestamp": "2025-09-03T00:17:30.518865+00:00"
+    },
+    {
+      "url": "http://localhost:8000//log",
+      "path": "log",
+      "status_code": 200,
+      "length": 1732,
+      "redirect": "",
+      "tool": "ffuf",
+      "risk": "medium_risk",
+      "owasp_category": "N/A",
+      "timestamp": "2025-09-03T00:17:30.518976+00:00"
+    },
+    {
+      "url": "http://localhost:8000//config",
+      "path": "config",
+      "status_code": 200,
+      "length": 1732,
+      "redirect": "",
+      "tool": "ffuf",
+      "risk": "high_risk",
+      "owasp_category": "A05:2021 \u2013 Security Misconfiguration",
+      "timestamp": "2025-09-03T00:17:30.519032+00:00"
+    },
+    {
+      "url": "http://localhost:8000//admin.php",
+      "path": "admin.php",
+      "status_code": 200,
+      "length": 1732,
+      "redirect": "",
+      "tool": "ffuf",
+      "risk": "high_risk",
+      "owasp_category": "A01:2021 \u2013 Broken Access Control",
+      "timestamp": "2025-09-03T00:17:30.519061+00:00"
+    },
+    {
+      "url": "http://localhost:8000//pma",
+      "path": "pma",
+      "status_code": 200,
+      "length": 1732,
+      "redirect": "",
+      "tool": "ffuf",
+      "risk": "medium_risk",
+      "owasp_category": "N/A",
+      "timestamp": "2025-09-03T00:17:30.519086+00:00"
+    },
+    {
+      "url": "http://localhost:8000//mysql",
+      "path": "mysql",
+      "status_code": 200,
+      "length": 1732,
+      "redirect": "",
+      "tool": "ffuf",
+      "risk": "high_risk",
+      "owasp_category": "N/A",
+      "timestamp": "2025-09-03T00:17:30.519100+00:00"
+    },
+    {
+      "url": "http://localhost:8000//database",
+      "path": "database",
+      "status_code": 200,
+      "length": 1732,
+      "redirect": "",
+      "tool": "ffuf",
+      "risk": "high_risk",
+      "owasp_category": "N/A",
+      "timestamp": "2025-09-03T00:17:30.519152+00:00"
+    },
+    {
+      "url": "http://localhost:8000//administrator",
+      "path": "administrator",
+      "status_code": 200,
+      "length": 1732,
+      "redirect": "",
+      "tool": "ffuf",
+      "risk": "high_risk",
+      "owasp_category": "A01:2021 \u2013 Broken Access Control",
+      "timestamp": "2025-09-03T00:17:30.519163+00:00"
+    },
+    {
+      "url": "http://localhost:8000//admin",
+      "path": "admin",
+      "status_code": 200,
+      "length": 1732,
+      "redirect": "",
+      "tool": "ffuf",
+      "risk": "high_risk",
+      "owasp_category": "A01:2021 \u2013 Broken Access Control",
+      "timestamp": "2025-09-03T00:17:30.519206+00:00"
+    },
+    {
+      "url": "http://localhost:8000//sql",
+      "path": "sql",
+      "status_code": 200,
+      "length": 1732,
+      "redirect": "",
+      "tool": "ffuf",
+      "risk": "high_risk",
+      "owasp_category": "N/A",
+      "timestamp": "2025-09-03T00:17:30.519220+00:00"
+    },
+    {
+      "url": "http://localhost:8000//test",
+      "path": "test",
+      "status_code": 200,
+      "length": 1732,
+      "redirect": "",
+      "tool": "ffuf",
+      "risk": "medium_risk",
+      "owasp_category": "N/A",
+      "timestamp": "2025-09-03T00:17:30.519232+00:00"
+    },
+    {
+      "url": "http://localhost:8000//wp-admin",
+      "path": "wp-admin",
+      "status_code": 200,
+      "length": 1732,
+      "redirect": "",
+      "tool": "ffuf",
+      "risk": "high_risk",
+      "owasp_category": "A01:2021 \u2013 Broken Access Control",
+      "timestamp": "2025-09-03T00:17:30.519244+00:00"
+    },
+    {
+      "url": "http://localhost:8000//login",
+      "path": "login",
+      "status_code": 200,
+      "length": 1732,
+      "redirect": "",
+      "tool": "ffuf",
+      "risk": "medium_risk",
+      "owasp_category": "N/A",
+      "timestamp": "2025-09-03T00:17:30.519311+00:00"
+    },
+    {
+      "url": "http://localhost:8000//testing",
+      "path": "testing",
+      "status_code": 200,
+      "length": 1732,
+      "redirect": "",
+      "tool": "ffuf",
+      "risk": "medium_risk",
+      "owasp_category": "N/A",
+      "timestamp": "2025-09-03T00:17:30.519346+00:00"
+    },
+    {
+      "url": "http://localhost:8000//db",
+      "path": "db",
+      "status_code": 200,
+      "length": 1732,
+      "redirect": "",
+      "tool": "ffuf",
+      "risk": "high_risk",
+      "owasp_category": "N/A",
+      "timestamp": "2025-09-03T00:17:30.519389+00:00"
+    },
+    {
+      "url": "http://localhost:8000//login.php",
+      "path": "login.php",
+      "status_code": 200,
+      "length": 1732,
+      "redirect": "",
+      "tool": "ffuf",
+      "risk": "medium_risk",
+      "owasp_category": "N/A",
+      "timestamp": "2025-09-03T00:17:30.519421+00:00"
+    },
+    {
+      "url": "http://localhost:8000//dev",
+      "path": "dev",
+      "status_code": 200,
+      "length": 1732,
+      "redirect": "",
+      "tool": "ffuf",
+      "risk": "medium_risk",
+      "owasp_category": "N/A",
+      "timestamp": "2025-09-03T00:17:30.519444+00:00"
+    },
+    {
+      "url": "http://localhost:8000//debug",
+      "path": "debug",
+      "status_code": 200,
+      "length": 1732,
+      "redirect": "",
+      "tool": "ffuf",
+      "risk": "medium_risk",
+      "owasp_category": "A04:2021 - Insecure Design",
+      "timestamp": "2025-09-03T00:17:30.519465+00:00"
+    },
+    {
+      "url": "http://localhost:8000//login.html",
+      "path": "login.html",
+      "status_code": 200,
+      "length": 1732,
+      "redirect": "",
+      "tool": "ffuf",
+      "risk": "medium_risk",
+      "owasp_category": "N/A",
+      "timestamp": "2025-09-03T00:17:30.519491+00:00"
+    },
+    {
+      "url": "http://localhost:8000//adminer",
+      "path": "adminer",
+      "status_code": 200,
+      "length": 1732,
+      "redirect": "",
+      "tool": "ffuf",
+      "risk": "high_risk",
+      "owasp_category": "A01:2021 \u2013 Broken Access Control",
+      "timestamp": "2025-09-03T00:17:30.519510+00:00"
+    },
+    {
+      "url": "http://localhost:8000//signin",
+      "path": "signin",
+      "status_code": 200,
+      "length": 1732,
+      "redirect": "",
+      "tool": "ffuf",
+      "risk": "medium_risk",
+      "owasp_category": "N/A",
+      "timestamp": "2025-09-03T00:17:30.519528+00:00"
+    },
+    {
+      "url": "http://localhost:8000//development",
+      "path": "development",
+      "status_code": 200,
+      "length": 1732,
+      "redirect": "",
+      "tool": "ffuf",
+      "risk": "medium_risk",
+      "owasp_category": "N/A",
+      "timestamp": "2025-09-03T00:17:30.519548+00:00"
+    },
+    {
+      "url": "http://localhost:8000//logs",
+      "path": "logs",
+      "status_code": 200,
+      "length": 1732,
+      "redirect": "",
+      "tool": "ffuf",
+      "risk": "medium_risk",
+      "owasp_category": "N/A",
+      "timestamp": "2025-09-03T00:17:30.519577+00:00"
+    },
+    {
+      "url": "http://localhost:8000//backup",
+      "path": "backup",
+      "status_code": 200,
+      "length": 1732,
+      "redirect": "",
+      "tool": "ffuf",
+      "risk": "high_risk",
+      "owasp_category": "A05:2021 \u2013 Security Misconfiguration",
+      "timestamp": "2025-09-03T00:17:30.519606+00:00"
+    },
+    {
+      "url": "http://localhost:8000//phpmyadmin",
+      "path": "phpmyadmin",
+      "status_code": 200,
+      "length": 1732,
+      "redirect": "",
+      "tool": "ffuf",
+      "risk": "high_risk",
+      "owasp_category": "A01:2021 \u2013 Broken Access Control",
+      "timestamp": "2025-09-03T00:17:30.519635+00:00"
+    },
+    {
+      "url": "http://localhost:8000//api",
+      "path": "api",
+      "status_code": 200,
+      "length": 1732,
+      "redirect": "",
+      "tool": "ffuf",
+      "risk": "medium_risk",
+      "owasp_category": "A01:2021 \u2013 Broken Access Control",
+      "timestamp": "2025-09-03T00:17:30.519755+00:00"
+    },
+    {
+      "url": "http://localhost:8000//upload",
+      "path": "upload",
+      "status_code": 200,
+      "length": 1732,
+      "redirect": "",
+      "tool": "ffuf",
+      "risk": "medium_risk",
+      "owasp_category": "A08:2021 \u2013 Software and Data Integrity Failures",
+      "timestamp": "2025-09-03T00:17:30.519791+00:00"
+    },
+    {
+      "url": "http://localhost:8000//backups",
+      "path": "backups",
+      "status_code": 200,
+      "length": 1732,
+      "redirect": "",
+      "tool": "ffuf",
+      "risk": "high_risk",
+      "owasp_category": "A05:2021 \u2013 Security Misconfiguration",
+      "timestamp": "2025-09-03T00:17:30.519824+00:00"
+    },
+    {
+      "url": "http://localhost:8000//uploads",
+      "path": "uploads",
+      "status_code": 200,
+      "length": 1732,
+      "redirect": "",
+      "tool": "ffuf",
+      "risk": "medium_risk",
+      "owasp_category": "A08:2021 \u2013 Software and Data Integrity Failures",
+      "timestamp": "2025-09-03T00:17:30.519884+00:00"
+    },
+    {
+      "url": "http://localhost:8000//configuration",
+      "path": "configuration",
+      "status_code": 200,
+      "length": 1732,
+      "redirect": "",
+      "tool": "ffuf",
+      "risk": "high_risk",
+      "owasp_category": "A05:2021 \u2013 Security Misconfiguration",
+      "timestamp": "2025-09-03T00:17:30.520097+00:00"
+    },
+    {
+      "url": "http://localhost:8000//.env",
+      "path": ".env",
+      "status_code": 200,
+      "length": 1732,
+      "redirect": "",
+      "tool": "ffuf",
+      "risk": "high_risk",
+      "owasp_category": "N/A",
+      "timestamp": "2025-09-03T00:17:30.520231+00:00"
+    },
+    {
+      "url": "http://localhost:8000//readme",
+      "path": "readme",
+      "status_code": 200,
+      "length": 1732,
+      "redirect": "",
+      "tool": "ffuf",
+      "risk": "low_risk",
+      "owasp_category": "N/A",
+      "timestamp": "2025-09-03T00:17:30.520303+00:00"
+    },
+    {
+      "url": "http://localhost:8000//readme.txt",
+      "path": "readme.txt",
+      "status_code": 200,
+      "length": 1732,
+      "redirect": "",
+      "tool": "ffuf",
+      "risk": "low_risk",
+      "owasp_category": "N/A",
+      "timestamp": "2025-09-03T00:17:30.520328+00:00"
+    },
+    {
+      "url": "http://localhost:8000//changelog",
+      "path": "changelog",
+      "status_code": 200,
+      "length": 1732,
+      "redirect": "",
+      "tool": "ffuf",
+      "risk": "medium_risk",
+      "owasp_category": "N/A",
+      "timestamp": "2025-09-03T00:17:30.520345+00:00"
+    },
+    {
+      "url": "http://localhost:8000//docs",
+      "path": "docs",
+      "status_code": 200,
+      "length": 1732,
+      "redirect": "",
+      "tool": "ffuf",
+      "risk": "low_risk",
+      "owasp_category": "N/A",
+      "timestamp": "2025-09-03T00:17:30.520360+00:00"
+    },
+    {
+      "url": "http://localhost:8000//documentation",
+      "path": "documentation",
+      "status_code": 200,
+      "length": 1732,
+      "redirect": "",
+      "tool": "ffuf",
+      "risk": "low_risk",
+      "owasp_category": "N/A",
+      "timestamp": "2025-09-03T00:17:30.520374+00:00"
+    },
+    {
+      "url": "http://localhost:8000//help",
+      "path": "help",
+      "status_code": 200,
+      "length": 1732,
+      "redirect": "",
+      "tool": "ffuf",
+      "risk": "low_risk",
+      "owasp_category": "N/A",
+      "timestamp": "2025-09-03T00:17:30.520391+00:00"
+    }
+  ],
+  "header_analysis": {
+    "target": "http://localhost:8000/",
+    "headers": {},
+    "issues": [
+      {
+        "type": "missing_header",
+        "header": "strict-transport-security",
+        "name": "HTTP Strict Transport Security (HSTS)",
+        "description": "Missing HTTP Strict Transport Security (HSTS): Enforces secure HTTPS connections",
+        "severity": "medium",
+        "owasp_category": "A05:2021 \u2013 Security Misconfiguration",
+        "recommendation": "Add strict-transport-security header to improve security"
+      },
+      {
+        "type": "missing_header",
+        "header": "content-security-policy",
+        "name": "Content Security Policy (CSP)",
+        "description": "Missing Content Security Policy (CSP): Controls resource loading to prevent XSS",
+        "severity": "high",
+        "owasp_category": "A05:2021 \u2013 Security Misconfiguration",
+        "recommendation": "Add content-security-policy header to improve security"
+      },
+      {
+        "type": "missing_header",
+        "header": "x-frame-options",
+        "name": "X-Frame-Options",
+        "description": "Missing X-Frame-Options: Prevents page embedding in frames (clickjacking protection)",
+        "severity": "medium",
+        "owasp_category": "A05:2021 \u2013 Security Misconfiguration",
+        "recommendation": "Add x-frame-options header to improve security"
+      },
+      {
+        "type": "missing_header",
+        "header": "x-content-type-options",
+        "name": "X-Content-Type-Options",
+        "description": "Missing X-Content-Type-Options: Prevents MIME type sniffing",
+        "severity": "low",
+        "owasp_category": "A05:2021 \u2013 Security Misconfiguration",
+        "recommendation": "Add x-content-type-options header to improve security"
+      }
+    ],
+    "score": 0,
+    "grade": "F",
+    "timestamp": "2025-09-02T20:17:30.573871",
+    "analysis_methods": [
+      "direct_fetch",
+      "securityheaders_api",
+      "nikto"
+    ],
+    "api_analysis": true,
+    "nikto_findings": {
+      "findings": [],
+      "total_items": 0,
+      "tool": "nikto"
+    }
+  },
+  "summary": {
+    "total_urls_crawled": 12,
+    "sql_injection_vulns": 0,
+    "xss_vulns": 1,
+    "paths_discovered": 37,
+    "header_issues": 4,
+    "risk_level": "Low"
+  }
+}

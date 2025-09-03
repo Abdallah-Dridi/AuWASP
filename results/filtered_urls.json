@@ -1,0 +1,46 @@
+{
+  "static": [],
+  "dynamic": [],
+  "forms": [
+    {
+      "url": "http://localhost:8000/documentation",
+      "action": "http://localhost:8000/documentation",
+      "method": "POST",
+      "inputs": [
+        {
+          "name": "stored_comment",
+          "type": "text",
+          "value": ""
+        }
+      ],
+      "source_url": "http://localhost:8000/documentation",
+      "sql_params": [],
+      "xss_params": [
+        "stored_comment"
+      ]
+    }
+  ],
+  "sensitive": [
+    "http://localhost:8000/admin",
+    "http://localhost:8000/api",
+    "http://localhost:8000/login"
+  ],
+  "api_endpoints": [
+    "http://localhost:8000/api"
+  ],
+  "excluded": [],
+  "all_in_scope": [
+    "http://localhost:8000/",
+    "http://localhost:8000/about",
+    "http://localhost:8000/admin",
+    "http://localhost:8000/api",
+    "http://localhost:8000/contact",
+    "http://localhost:8000/docs",
+    "http://localhost:8000/documentation",
+    "http://localhost:8000/help",
+    "http://localhost:8000/home",
+    "http://localhost:8000/index.html",
+    "http://localhost:8000/index.php",
+    "http://localhost:8000/login"
+  ]
+}

